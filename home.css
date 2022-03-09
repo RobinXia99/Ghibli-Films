@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: 100vh;
+    width: 100%;
+    background-image: url(images/ghiblibackground.jpeg);
+    background-position: center;
+    background-size: cover;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.cover {
+    background-color: rgba(0, 0, 0, 0.42);
+    overflow: hidden;
+    width: 100%;    
+    height: 100%;
+}

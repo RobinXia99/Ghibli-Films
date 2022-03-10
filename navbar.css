@@ -1,0 +1,47 @@
+.navbar {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    height: 7vh;
+    width: auto;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+nav {
+    flex: 1;
+    padding-left: 25px;
+    font-family: 'Avenir Light';
+}
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 0px 20px;
+    width: 6vw;
+    text-align: center;
+}
+
+.navitem {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.navitem:hover {
+    font-family: 'Avenir Heavy';
+    border-top: 5px solid rgb(72, 224, 224);
+    text-shadow: 0 0 10px rgb(72, 224, 224);
+}

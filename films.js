@@ -4,7 +4,11 @@ const filmsUrl = "https://ghibliapi.herokuapp.com/films";
 
 const navItems = document.querySelectorAll('nav a');
 
-const filmOptions = document.getElementById('scrollbar');
+const filmList = document.getElementsByClassName('film');
+
+const filmCatalog = document.getElementById('scrollbar');
+
+const background = document.getElementById("backgroundCover");
 
 for(let navItem of navItems) {
     if(activePage.includes(navItem.innerText.toLowerCase())) {
@@ -14,30 +18,54 @@ for(let navItem of navItems) {
     }
 }
 
-let activeFilm = "";
+//////////////////
+
+let films = {
+    list: {},
+    activeFilm: "",
+    selectFilm: function (film) {
+        let currentFilm = document.querySelector('.film__active');
+
+        if (currentFilm) {
+            currentFilm.classList.remove('film__active');
+        }
+        
+        film.classList.add('film__active');
+        this.activeFilm = film.innerText;
+
+        background.src = `images/${film.id}.png`;
+
+        
+        
+       
+    },
+};
 
 window.addEventListener('load', async e => {
 
-    let films = await fetchFilms(filmsUrl);
+    films.list = await fetchFilms(filmsUrl);
 
-    let index = 0;
 
-    for(let film of films) {
+    for(let film of films.list) {
+
         let option = document.createElement("li");
         option.classList.add('film');
         option.innerText = film.title;
+        option.id = film.id;
 
-        if(index == 0) {
-            option.classList.add('film__active');
-            index++;
-        }
+        filmCatalog.appendChild(option);
 
-        filmOptions.appendChild(option);
     }
+    
+    films.selectFilm(filmList[0]);
+    
 
-
-
-
+    for(let film of filmList) {
+        film.addEventListener('click', function() {
+            films.selectFilm(film);
+            console.log(films.activeFilm);
+        })
+    }
 })
 
 async function fetchFilms(url) {

@@ -5,7 +5,6 @@
     margin: 0;
     background-color: rgba(0, 0, 0, 0.6);
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
-    flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     position: fixed;
@@ -32,16 +31,23 @@ nav ul li {
     margin: 0px 20px;
     width: 6vw;
     text-align: center;
+    height: 10vh;
 }
 
 .navitem {
     text-decoration: none;
     color: white;
     font-size: 1.2rem;
+    line-height: 10vh;
 }
+
 
 .navitem:hover {
     font-family: 'Avenir Heavy';
-    border-top: 5px solid rgb(72, 224, 224);
+    text-shadow: 0 0 10px rgb(72, 224, 224);
+}
+
+.navitem.active {
+    font-family: 'Avenir Heavy';
     text-shadow: 0 0 10px rgb(72, 224, 224);
 }

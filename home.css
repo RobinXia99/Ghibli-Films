@@ -31,7 +31,7 @@
     font-family: 'Avenir Book';
     color: white;
     text-shadow: 0 3px 6px black;
-    font-size: 35px;
+    font-size: 2.2rem;
     font-weight: lighter;
     margin-top: 25px;
 }
@@ -42,6 +42,7 @@
     align-items: center;
     width: 500px;
     height: 400px;
+    position: relative;
     background-color: rgba(0, 0, 0, 0.53);
     border-radius: 20px;
     margin-left: 8%;
@@ -51,9 +52,9 @@
 }
 
 .infobody {
-    margin-top: 30px;
+    margin: 2rem 2rem;
     width: 450px;
-    font-size: 16px;
+    font-size: 1rem;
     font-family: 'Avenir Book';
     color: white;
     line-height: 170%;
@@ -72,38 +73,14 @@
     margin-bottom: 15px;
 }
 
-.bottomcontainer {
-    background-color: black;
-    width: 100%;
-    height: 300px;
-    color: white;
-    text-shadow: 0 3px 6px black;
-    font-size: 20px;
-    font-family: 'Avenir Book';
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
 
-.socialscontainer {
-    width: 100%;
-    height: 10vh;
-    background-color: rgba(34, 34, 34, 0.815);
-    box-shadow: 0 0 1px rgba(255, 255, 255, 0.685);
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.socialicon {
-    font-size: 40px;
-    color: gray;
-    cursor: pointer;
-    margin-left: 25px;
-}
-
-.socialicon:hover {
-    transform: scale(1.05);
-    color: white;
+@media screen and (max-width: 500px) {
+    .infocontainer {
+        width: 95%;
+        height: 50%;
+        margin: 20% auto;
+    }
+    .infobody {
+        width: 90%;
+    }
 }

@@ -1,3 +1,12 @@
+@keyframes slideInFromRight {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
 .navbar {
     width: 100%;
     height: 10vh;
@@ -41,6 +50,70 @@ nav ul li {
     line-height: 10vh;
 }
 
+#nav_dropdown_btn {
+    text-decoration: none;
+    color: white;
+    font-size: 1.8rem;
+    width: auto;
+    display: none;
+}
+
+#nav_dropdown {
+    display: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 80%;
+    background-color: white;
+    z-index: 100;
+    box-shadow: 0 0 5px rgb(0, 0, 0);
+    flex-direction: column;
+}
+
+.nav_dropdown_active {
+    animation: slideInFromRight 0.5s;
+}
+
+#nav_dropdown_close {
+    height: auto;
+    width: auto;
+    margin-right: 10%;
+    color: white;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+    font-size: 3rem;
+    cursor: pointer;
+
+}
+
+.nav_dropdown_header {
+    width: 100%;
+    height: 10%;
+    background-color: rgb(19, 19, 27);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav_dropdown_item {
+    cursor: pointer;
+    width: 100%;
+    height: 10%;
+    border-bottom: 0.1px solid rgba(128, 128, 128, 0.6);
+    font-family: 'Avenir Book';
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: rgb(19, 19, 19);
+}
+
+.nav_dropdown_item_active {
+    border-left: 2vw solid rgb(71, 160, 233);
+}
+
 
 .navitem:hover {
     font-family: 'Avenir Heavy';
@@ -50,4 +123,25 @@ nav ul li {
 .navitem.active {
     font-family: 'Avenir Heavy';
     text-shadow: 0 0 10px rgb(72, 224, 224);
+}
+
+@media screen and (max-width: 600px) {
+    .navitem {
+        display: none;
+    }
+
+    .navbar {
+        justify-content: space-between;
+    }
+
+    #nav_dropdown_btn {
+        display: inline;
+    }
+
+    nav ul li {
+        width: auto;
+        height: auto;
+        margin: auto 20%;
+        float: right;
+    }
 }

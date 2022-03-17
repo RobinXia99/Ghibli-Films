@@ -33,3 +33,11 @@
     transform: scale(1.05);
     color: white;
 }
+
+.bottom_text {
+    color: gray;
+    font-family: 'Avenir Book';
+    text-align: center;
+    font-size: 0.8rem;
+    margin: auto 0;
+}

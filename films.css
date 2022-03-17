@@ -108,7 +108,7 @@
 
 .film__active {
     padding-left: 80px;
-    text-shadow: 0 0 6px rgb(224, 211, 23);
+    text-shadow: 0 0 10px rgb(72, 224, 224);
     background-image: linear-gradient(to right, rgb(0, 0, 0, 0.52), rgba(0, 0, 0, 0.3) , rgba(0, 0, 0, 0.12), transparent);
     animation: fadeIn 1s;
     z-index: 5;
@@ -130,6 +130,10 @@
     animation: fadeIn 1s;
 }
 
+#filmInfo_wrapper:first-child {
+    animation: fadeIn 1s;
+}
+
 
 .filmTitle {
     font-family: 'Avenir Book';
@@ -145,7 +149,7 @@
 .filmCover {
     height: 250px;
     width: 170px;
-    border-radius: 5px;
+    border-radius: 8px;
     grid-column: auto / span 2;
     grid-row: auto / span 4;
     margin-left: 18px;
@@ -201,3 +205,55 @@ td:last-child {
     padding: 20px 0;
     text-shadow: 0 3px 6px rgba(0, 0, 0, 0.8);
 }
+
+@media screen and (max-width: 500px) {
+    #backgroundCover {
+        height: 100%;
+        width: auto;
+    }
+
+    .filmCover {
+        margin: 0 0;
+    }
+    .film_infoTable {
+        margin: 0 0;
+        width: 90%;
+    }
+
+    .filmTitle {
+        font-size: 1.5rem;
+        margin: 2% 1%;
+        text-align: center;
+    }
+
+    .film_synopsis {
+        overflow-y: scroll;
+        font-size: 1rem;
+        margin-bottom: 2%;
+    }
+
+    .film_sidebar {
+        display: none;
+    }
+
+
+    #filmInfo_wrapper {
+        width: 100%;
+        height: 90%;
+        margin: 0 auto;
+        top: 10%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 0%;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: white;
+        border-radius: 25px;
+    }
+
+    
+}
+

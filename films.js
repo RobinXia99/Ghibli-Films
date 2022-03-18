@@ -15,13 +15,14 @@ const filmCatalog = document.getElementById('scrollbar');
 
 const mobileFilmCatalog = document.getElementById('mobile_filmlist');
 
-const mobileShowListBtn = document.getElementById('mobile_filmlist_btn');
+const mobileListToggle = document.getElementById('mobile_filmlist_btn');
 
 const background = document.getElementById("backgroundCover");
 
 const filmInfo = document.getElementById("filmInfo_wrapper");
 
 
+// Set active tab
 for(let navItem of navItems) {
     if(activePage.includes(navItem.innerText.toLowerCase())) {
         navItem.classList.add("active");
@@ -30,6 +31,7 @@ for(let navItem of navItems) {
     }
 }
 
+// Set active tab for mobile menu
 for(let item of dropdownItems) {
     if(activePage.includes(item.innerText.toLowerCase())) {
         item.classList.add("nav_dropdown_item_active");
@@ -39,6 +41,54 @@ for(let item of dropdownItems) {
 }
 
 //////////////////
+
+
+// On window load, fetch films and create film menu
+window.addEventListener('load', async e => {
+
+    films.list = await fetchFilms(filmsUrl);
+
+    for(let film of films.list) {
+
+        let option = document.createElement("li");
+        option.classList.add('film');
+        option.innerText = film.title;
+        option.id = film.id;
+
+
+        // If window width is < 500px
+
+        if(windowWidth.matches) {
+            mobileFilmCatalog.appendChild(option);
+        } else {
+            filmCatalog.appendChild(option);
+        }
+        
+    }
+    
+    films.selectFilm(filmList[0]);
+    
+
+    for(let film of filmList) {
+        film.addEventListener('click', function() {
+            films.selectFilm(film);
+            console.log(films.activeFilm);
+        })
+    }
+})
+
+
+
+async function fetchFilms(url) {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      const data = await response.json();
+      return data;
+}
+
 
 let films = {
     list: {},
@@ -63,47 +113,7 @@ let films = {
     },
 };
 
-window.addEventListener('load', async e => {
 
-    films.list = await fetchFilms(filmsUrl);
-
-    for(let film of films.list) {
-
-        let option = document.createElement("li");
-        option.classList.add('film');
-        option.innerText = film.title;
-        option.id = film.id;
-
-        if(windowWidth.matches) {
-            mobileFilmCatalog.appendChild(option);
-        } else {
-            filmCatalog.appendChild(option);
-        }
-        
-
-        
-    }
-    
-    films.selectFilm(filmList[0]);
-    
-
-    for(let film of filmList) {
-        film.addEventListener('click', function() {
-            films.selectFilm(film);
-            console.log(films.activeFilm);
-        })
-    }
-})
-
-async function fetchFilms(url) {
-    const response = await fetch(url);
-
-    if (!response.ok) {
-        throw new Error(`HTTP error: ${response.status}`);
-      }
-      const data = await response.json();
-      return data;
-}
 
 
 function setInfo(film) {
@@ -123,7 +133,7 @@ function setInfo(film) {
     let synopsis = document.createElement('p');
 
     filmTitle.classList.add('filmTitle');
-    filmTitle.innerText = `${film.title} - ${film.original_title}`
+    filmTitle.innerText = `${film.title} - ${film.original_title}`;
 
     filmCover.classList.add('filmCover');
     filmCover.src = film.image;
@@ -172,16 +182,16 @@ function setInfo(film) {
 
 }
 
-mobileShowListBtn.addEventListener('click', function() {
-    let innerText = mobileShowListBtn.innerText;
+mobileListToggle.addEventListener('click', function() {
+    let innerText = mobileListToggle.innerText;
 
     if(innerText == "Select Film") {
-        mobileShowListBtn.innerHTML = "Close";
+        mobileListToggle.innerHTML = "Close";
         mobileFilmCatalog.style.display = 'inline';
-        mobileShowListBtn.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
+        mobileListToggle.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
     } else {
-        mobileShowListBtn.innerText = "Select Film"
+        mobileListToggle.innerText = "Select Film"
         mobileFilmCatalog.style.display = 'none';
-        mobileShowListBtn.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+        mobileListToggle.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
     }
 })

@@ -109,7 +109,12 @@
 .film__active {
     padding-left: 80px;
     text-shadow: 0 0 10px rgb(72, 224, 224);
-    background-image: linear-gradient(to right, rgb(0, 0, 0, 0.52), rgba(0, 0, 0, 0.3) , rgba(0, 0, 0, 0.12), transparent);
+    background-image: linear-gradient(to right, 
+    rgb(0, 0, 0, 0.7), 
+    rgba(0, 0, 0, 0.5), 
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.2), 
+    transparent);
     animation: fadeIn 1s;
     z-index: 5;
 }

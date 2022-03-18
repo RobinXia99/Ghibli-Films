@@ -58,6 +58,7 @@ nav ul li {
     display: none;
 }
 
+
 #nav_dropdown {
     display: none;
     position: fixed;
@@ -125,6 +126,14 @@ nav ul li {
     text-shadow: 0 0 10px rgb(72, 224, 224);
 }
 
+#nav_select_film {
+    text-decoration: none;
+    color: white;
+    font-size: 1.8rem;
+    width: auto;
+    display: none;
+}
+
 @media screen and (max-width: 600px) {
     .navitem {
         display: none;
@@ -138,10 +147,16 @@ nav ul li {
         display: inline;
     }
 
+    #nav_select_film {
+        display: inline;
+    }
+
     nav ul li {
         width: auto;
         height: auto;
         margin: auto 20%;
         float: right;
     }
+
+
 }

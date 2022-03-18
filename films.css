@@ -206,7 +206,45 @@ td:last-child {
     text-shadow: 0 3px 6px rgba(0, 0, 0, 0.8);
 }
 
+#mobile_filmlist_btn {
+    width: 100%;
+    height: 10%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-family: 'Avenir Book';
+    font-size: 1.2rem;
+    position: absolute;
+    top: 10%;
+    margin: 0 0;
+    cursor: pointer;
+    display: none;
+}
+
+#mobile_filmlist {
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 20%;
+    margin: 0 auto;
+    height: 45%;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    display: none;
+    z-index: 2;
+}
+
+.mobile_filmlist_item {
+    color: white;
+    font-family: 'Avenir Book';
+}
+
 @media screen and (max-width: 500px) {
+
+    .container {
+        height: 120vh;
+    }
+
     #backgroundCover {
         height: 100%;
         width: auto;
@@ -228,7 +266,7 @@ td:last-child {
 
     .film_synopsis {
         overflow-y: scroll;
-        font-size: 1rem;
+        font-size: 1.2rem;
         margin-bottom: 2%;
     }
 
@@ -236,12 +274,16 @@ td:last-child {
         display: none;
     }
 
+    .film__active {
+        background-color: rgba(72, 224, 224, 0.8);
+    }
+
 
     #filmInfo_wrapper {
         width: 100%;
-        height: 90%;
+        height: 100%;
         margin: 0 auto;
-        top: 10%;
+        top: 20%;
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -252,6 +294,13 @@ td:last-child {
     ::-webkit-scrollbar-thumb {
         background: white;
         border-radius: 25px;
+    }
+
+    #mobile_filmlist_btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
 
     

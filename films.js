@@ -13,9 +13,14 @@ const filmList = document.getElementsByClassName('film');
 
 const filmCatalog = document.getElementById('scrollbar');
 
+const mobileFilmCatalog = document.getElementById('mobile_filmlist');
+
+const mobileShowListBtn = document.getElementById('mobile_filmlist_btn');
+
 const background = document.getElementById("backgroundCover");
 
 const filmInfo = document.getElementById("filmInfo_wrapper");
+
 
 for(let navItem of navItems) {
     if(activePage.includes(navItem.innerText.toLowerCase())) {
@@ -69,8 +74,14 @@ window.addEventListener('load', async e => {
         option.innerText = film.title;
         option.id = film.id;
 
-        filmCatalog.appendChild(option);
+        if(windowWidth.matches) {
+            mobileFilmCatalog.appendChild(option);
+        } else {
+            filmCatalog.appendChild(option);
+        }
+        
 
+        
     }
     
     films.selectFilm(filmList[0]);
@@ -158,8 +169,19 @@ function setInfo(film) {
 
     filmInfo.append(filmTitle, filmCover, filmTable, synopsis);
     
-    
 
-    
 }
 
+mobileShowListBtn.addEventListener('click', function() {
+    let innerText = mobileShowListBtn.innerText;
+
+    if(innerText == "Select Film") {
+        mobileShowListBtn.innerHTML = "Close";
+        mobileFilmCatalog.style.display = 'inline';
+        mobileShowListBtn.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
+    } else {
+        mobileShowListBtn.innerText = "Select Film"
+        mobileFilmCatalog.style.display = 'none';
+        mobileShowListBtn.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+    }
+})

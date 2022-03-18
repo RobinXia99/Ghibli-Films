@@ -12,12 +12,8 @@ Films
 ![ghiblipreview](https://user-images.githubusercontent.com/90704273/158990187-55e6142c-4c79-4a65-9cb9-1099e335741b.png)
 
 Responsive Design
-
-Home(Smaller Devices)
 ![ghiblipreviewhomem](https://user-images.githubusercontent.com/90704273/158990485-ca069a02-3634-417d-9bd5-d46b75bdd763.png)
-
-Films(Smaller Devices)
-![ghiblifilm](https://user-images.githubusercontent.com/90704273/158990172-674aaa97-45d2-47ab-![ghiblipreviewhomem](https://user-images.githubusercontent.com/90704273/158990202-275725bb-698d-46b3-a5a4-e07ab141f96f.png)
+![ghiblifilm](https://user-images.githubusercontent.com/90704273/158990933-86682b5e-9d65-4d26-9427-25fc5919402c.png)
 ![ghiblifilm2](https://user-images.githubusercontent.com/90704273/158990182-84b83bb4-11b0-425c-ad27-00300e638d43.png)
 ![ghiblifilmselect](https://user-images.githubusercontent.com/90704273/158990184-0e44e8d1-c2b4-4817-8995-b2783213ed22.png)
 

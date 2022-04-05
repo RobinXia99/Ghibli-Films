@@ -10,7 +10,6 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    z-index: 6;
 }
 
 .socialscontainer {
@@ -21,7 +20,6 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    z-index: 4;
 }
 
 .socialicon {

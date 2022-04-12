@@ -4,6 +4,9 @@ My very first project using an open source API (https://ghibliapi.herokuapp.com/
 
 The website is created using CSS, HTML and JavaScript through VS Code.
 
+# Demo
+https://robinxia99.github.io/Ghibli-Films/
+
 
 ## Home
 ![ghiblipreviewhome](https://user-images.githubusercontent.com/90704273/158990197-11eb9fe1-0dd2-400a-a8d2-5574bfbc6ed8.png)

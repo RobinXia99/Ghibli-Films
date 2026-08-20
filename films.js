@@ -17,7 +17,7 @@ const mobileFilmCatalog = document.getElementById('mobile_filmlist');
 
 const mobileListToggle = document.getElementById('mobile_filmlist_btn');
 
-const background = document.getElementById("backgroundCover");
+const backgroundLayers = document.querySelectorAll('.background_layer');
 
 const filmInfo = document.getElementById("filmInfo_wrapper");
 
@@ -48,12 +48,13 @@ window.addEventListener('load', async e => {
 
     films.list = await fetchFilms(filmsUrl);
 
-    for(let film of films.list) {
+    for(let [i, film] of films.list.entries()) {
 
         let option = document.createElement("li");
         option.classList.add('film');
         option.innerText = film.title;
         option.id = film.id;
+        option.style.animationDelay = `${Math.min(i, 14) * 40}ms`;
 
 
         // If window width is < 500px
@@ -107,19 +108,42 @@ let films = {
             return item.id === film.id;
         })
 
-        // Films added to the API after this project have no local background image
-        background.onerror = () => {
-            background.onerror = null;
-            background.src = this.list[index].movie_banner;
-        };
-        background.src = `images/${film.id}.png`;
-
+        setBackground(this.list[index]);
         setInfo(this.list[index]);
        
     },
 };
 
 
+
+
+// Crossfade: preload the next background, then fade it in over the current one
+let backgroundFront = 0;
+
+function setBackground(film) {
+    let incoming = backgroundLayers[1 - backgroundFront];
+    let outgoing = backgroundLayers[backgroundFront];
+
+    let preload = new Image();
+
+    preload.onload = () => {
+        incoming.src = preload.src;
+        incoming.style.zIndex = 2;
+        outgoing.style.zIndex = 1;
+        incoming.classList.add('is-visible');
+        outgoing.classList.remove('is-visible');
+        backgroundFront = 1 - backgroundFront;
+    };
+
+    // Films added to the API after this project have no local background image
+    preload.onerror = () => {
+        if (preload.src.endsWith('.png')) {
+            preload.src = film.movie_banner;
+        }
+    };
+
+    preload.src = `images/${film.id}.png`;
+}
 
 
 function setInfo(film) {
@@ -138,8 +162,14 @@ function setInfo(film) {
 
     let synopsis = document.createElement('p');
 
+    let originalTitle = document.createElement('span');
+
     filmTitle.classList.add('filmTitle');
-    filmTitle.innerText = `${film.title} - ${film.original_title}`;
+    filmTitle.innerText = film.title;
+
+    originalTitle.classList.add('filmTitle_original');
+    originalTitle.innerText = film.original_title;
+    filmTitle.appendChild(originalTitle);
 
     filmCover.classList.add('filmCover');
     filmCover.src = film.image;

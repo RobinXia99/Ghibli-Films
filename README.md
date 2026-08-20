@@ -1,6 +1,6 @@
 # Ghibli-Films
  
-My very first project using an open source API (https://ghibliapi.herokuapp.com/#section/Studio-Ghibli-API)
+My very first project using an open source API (https://ghibliapi.dev/#section/Getting-Started)
 
 The website is created using CSS, HTML and JavaScript through VS Code.
 

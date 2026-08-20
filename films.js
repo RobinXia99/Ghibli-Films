@@ -3,7 +3,7 @@ const activePage = window.location.pathname;
 
 var windowWidth = window.matchMedia("(max-width: 500px)");
 
-const filmsUrl = "https://ghibliapi.herokuapp.com/films";
+const filmsUrl = "https://ghibliapi.dev/films";
 
 const navItems = document.querySelectorAll('nav a');
 
@@ -103,11 +103,17 @@ let films = {
         film.classList.add('film__active');
         this.activeFilm = film.innerText;
 
-        background.src = `images/${film.id}.png`;
-
         let index = (this.list).findIndex(function(item, index) {
             return item.id === film.id;
         })
+
+        // Films added to the API after this project have no local background image
+        background.onerror = () => {
+            background.onerror = null;
+            background.src = this.list[index].movie_banner;
+        };
+        background.src = `images/${film.id}.png`;
+
         setInfo(this.list[index]);
        
     },
